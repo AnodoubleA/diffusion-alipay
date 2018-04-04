@@ -1,0 +1,40 @@
+<view class='shade' hidden='{{!show}}'></view>
+<view class='root v-box' hidden='{{!show}}'>
+    <form bindsubmit='onSubmit' bindreset='onReset'>
+        <view class='main v-box'>
+            <view class='fields v-box full auto-scroll-y'>
+                <view class='field row key-box'>
+                    <view class='v-box'>
+                        <radio-group name='format' class="radio-group h-box-c HA">
+                            <label class="radio">
+                                <radio value="text" checked="{{format==='text'}}" />普通文本
+                            </label>
+                            <label class="radio">
+                                <radio value="base64" checked="{{format==='base64'}}" />Base64
+                            </label>
+                            <label class="radio">
+                                <radio value="hex" checked="{{format==='hex'}}" disabled='true' />16进制
+                            </label>
+                        </radio-group>
+                        <view class='value h-box-c full'>
+                            <view class='icon-button paste' catchlongpress='onKeyPaste'></view>
+                            <input class='full-x' name='key' maxlength='-1' value='{{key}}' placeholder='请输入密码'></input>
+                            <view class='icon-button close' catchlongpress='onKeyClean'></view>
+                        </view>
+                    </view>
+                </view>
+                <view class='field row'>
+                    <view class='name h-box-c'>
+                        <text>分组长度（位bit）</text>
+                        <text class='icon-info info' catchtap='showHelp' data-key='cipher.group'></text>
+                    </view>
+                    <input class='value' name='group' type='number' value='{{group}}' bindblur='onGroupBlur' placeholder='请输入分组长度'></input>
+                </view>
+            </view>
+            <view class='buttons h-box'>
+                <button class='cancel' catchtap='onCancel'>取消</button>
+                <button type='primary' form-type='submit'>确定</button>
+            </view>
+        </view>
+    </form>
+</view>
